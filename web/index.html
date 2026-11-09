@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokédex Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="banner">
+    <div class="wrap">
+      <p class="eyebrow">FIELD GUIDE / NATIONAL DEX</p>
+      <h1>Pokédex Studio</h1>
+      <p>Explore Pokémon species, evolution lines, abilities, and base stats.</p>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="summary" aria-label="Dataset summary">
+      <div><span>Species in snapshot</span><strong id="species-count">—</strong></div>
+      <div><span>Generations</span><strong id="generation-count">—</strong></div>
+      <div><span>Matching species</span><strong id="matching-count">—</strong></div>
+    </section>
+    <form class="filters" aria-label="Filter Pokémon">
+      <label>Search <input id="query" type="search" placeholder="Name or National Dex number"></label>
+      <label>Type <select id="type"><option value="">All types</option></select></label>
+      <label>Generation <select id="generation"><option value="">All generations</option></select></label>
+      <label>Sort <select id="sort"><option value="id">Dex number</option><option value="total">Highest stat total</option><option value="name">Name A–Z</option></select></label>
+      <button type="reset" class="secondary">Reset</button>
+    </form>
+    <p id="status" role="status">Loading the local snapshot…</p>
+    <div class="workspace">
+      <section class="panel catalog" aria-labelledby="catalog-title">
+        <h2 id="catalog-title">Species</h2>
+        <ul id="species-list"></ul>
+        <nav class="pager" aria-label="Species pages">
+          <button id="previous" type="button" class="secondary">Previous</button>
+          <span id="page-number"></span>
+          <button id="next" type="button" class="secondary">Next</button>
+        </nav>
+      </section>
+      <article id="profile" class="panel profile" aria-label="Selected Pokémon"></article>
+    </div>
+    <section class="panel distribution" aria-labelledby="distribution-title">
+      <h2 id="distribution-title">Type distribution</h2>
+      <p class="muted">Counts for the current filters. Dual-type species contribute to both types.</p>
+      <div id="type-chart" class="type-chart"></div>
+    </section>
+    <footer><p id="snapshot"></p><p>Data and sprites from <a href="https://pokeapi.co/docs/v2">PokéAPI</a>. Unofficial fan project.</p></footer>
+  </main>
+</body>
+</html>
